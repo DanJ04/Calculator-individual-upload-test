@@ -6,10 +6,10 @@ void ofApp::setup(){
 	testFont.load("Calculator.ttf", 50);
 
 		//---------KIERAN----------------------
-	button1.set(50, 500, 100, 100);
+	button1.set(20, 450, 100, 100);
 	buttonEqual.set(390, 580, 100, 100); //Setup of buttons pushed by kieran
    	buttonDecimal.set(270, 580, 100, 100);
-   	button0.set(20, 580, 230, 100);
+   	button0.set(150, 580, 100, 100);
 		//-------------------------------------
 
 
@@ -73,9 +73,9 @@ void ofApp::draw(){
 	//---------KIERAN----------------------
 	  ofSetColor(255);
     //adds the text for each number
-    testFont.drawString("1", 85,570);
+    testFont.drawString("1", 55, 520);
     testFont.drawString(".", 315, 640); //Decimal point drawn
-    testFont.drawString("0", 120, 650); //Number 0 drawn
+    ]testFont.drawString("0", 190, 650); //Number 0 drawn
     testFont.drawString("=", 430, 650); //Equals operator drawn
 	//-------------------------------------
 
