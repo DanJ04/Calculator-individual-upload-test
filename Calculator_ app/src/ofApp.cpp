@@ -6,10 +6,10 @@ void ofApp::setup(){
 	testFont.load("Calculator.ttf", 50);
 
 		//---------KIERAN----------------------
-	button1.set(20, 450, 100, 100);
-	buttonEqual.set(390, 580, 100, 100); //Setup of buttons pushed by kieran
-   	buttonDecimal.set(270, 580, 100, 100);
-   	button0.set(150, 580, 100, 100);
+	button1.set(20, 460, 100, 100);
+        buttonEqual.set(380, 580, 100, 100); //Setup of buttons pushed by kieran
+        buttonDecimal.set(260, 580, 100, 100);
+        button0.set(140, 580, 100, 100);
 		//-------------------------------------
 
 
@@ -20,6 +20,11 @@ void ofApp::setup(){
 
 
 		//------------ANJALI--------------------
+	//buttonInterface.set(20, 20, 460, 60); an idea for the size of the interface
+	buttonClear.set(20, 100, 100, 100);
+        button7.set(20, 220, 100, 100);
+        button4.set(20, 340, 100, 100);
+        buttonPandN.set(20, 580, 100, 100); // plus and minus sign for positive and negative numbers
 
 
 		//--------------------------------------
@@ -45,9 +50,9 @@ void ofApp::draw(){
     //draw button
 	//---------KIERAN----------------------
 	ofDrawRectangle(button1); 
-    ofDrawRectangle(buttonEqual); //Equal button, Decimal place button and number 0 drawn by Kieran
-    ofDrawRectangle(buttonDecimal);
-    ofDrawRectangle(button0);
+        ofDrawRectangle(buttonEqual); //Equal button, Decimal place button and number 0 drawn by Kieran
+        ofDrawRectangle(buttonDecimal);
+        ofDrawRectangle(button0);
 	//-------------------------------------
 
 
@@ -58,8 +63,10 @@ void ofApp::draw(){
 
 
 	//------------ANJALI--------------------
-
-
+	ofDrawRectangle(buttonClear);
+	ofDrawRectangle(button7);
+	ofDrawRectangle(button4);
+	ofDrawRectangle(buttonPandN);
 	//--------------------------------------
 
 	//------------ANJALY--------------------
@@ -71,12 +78,12 @@ void ofApp::draw(){
     
   
 	//---------KIERAN----------------------
-	  ofSetColor(255);
-    //adds the text for each number
-    testFont.drawString("1", 55, 520);
-    testFont.drawString(".", 315, 640); //Decimal point drawn
-    ]testFont.drawString("0", 190, 650); //Number 0 drawn
-    testFont.drawString("=", 430, 650); //Equals operator drawn
+	ofSetColor(255);
+	//adds the text for each number
+	testFont.drawString("1", 60, 530);
+	testFont.drawString(".", 305, 640); //Decimal point drawn
+	testFont.drawString("0", 180, 650); //Number 0 drawn
+	testFont.drawString("=", 420, 650); //Equals operator drawn
 	//-------------------------------------
 
 
@@ -87,6 +94,10 @@ void ofApp::draw(){
 
 
 	//------------ANJALI--------------------
+	testFont.drawString("C", 55, 170); // Clear number drawn
+	testFont.drawString("7", 55, 290);
+	testFont.drawString("4", 55, 410); 
+	testFont.drawString("+/-", 30, 650); // plus and minus sign drawn
 
 
 	//--------------------------------------
