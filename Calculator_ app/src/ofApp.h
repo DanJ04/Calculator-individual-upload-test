@@ -26,6 +26,10 @@ class ofApp : public ofBaseApp{
 
 
 		//------------ANJALI--------------------
+                ofRectangle buttonClear;
+                ofRectangle button7;
+                ofRectangle button4;
+                ofRectangle buttonPandN; // plus and minus sign for positive and negative numbers
 
 
 		//--------------------------------------
