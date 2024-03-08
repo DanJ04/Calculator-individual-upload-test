@@ -11,9 +11,12 @@ class ofApp : public ofBaseApp{
 		void draw();
 
 		ofTrueTypeFont testFont;
-
+                //---------KIERAN&DAN BUTTON 0,1.=. -----------------------
 		ofRectangle button1;
-
+		ofRectangle buttonEqual;
+		ofRectangle buttonDecimal;
+		ofRectangle button0;
+		//----------------------------------------------------------
 
 		void keyPressed(int key);
 		void keyReleased(int key);
