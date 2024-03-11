@@ -20,7 +20,11 @@ class ofApp : public ofBaseApp{
 
 
 		//------------DAN----------------------
-
+		ofRectangle buttonPlus;
+		ofRectangle buttonX;
+		ofRectangle buttonMinus;
+		ofRectangle buttonDiv; 
+		ofRectangle button3;
 
 		//--------------------------------------
 
