@@ -40,6 +40,9 @@ class ofApp : public ofBaseApp{
 
 		//------------ANJALY--------------------
 
+                   ofRectangle button8;
+                   ofRectangle button5;
+                   ofRectangle button2;
 
 		//--------------------------------------
 
