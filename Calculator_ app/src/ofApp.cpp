@@ -14,7 +14,11 @@ void ofApp::setup(){
 
 
 		//------------DAN----------------------
-
+	buttonDiv.set(380, 100, 100, 100);
+	buttonX.set(380, 220, 100, 100);
+	buttonMinus.set(380, 340, 100, 100);
+	buttonPlus.set(380, 460, 100, 100); 
+	button3.set(260, 460, 100, 100);
 
 		//--------------------------------------
 
@@ -50,14 +54,22 @@ void ofApp::draw(){
     //draw button
 	//---------KIERAN----------------------
 	ofDrawRectangle(button1); 
-        ofDrawRectangle(buttonEqual); //Equal button, Decimal place button and number 0 drawn by Kieran
+      	ofSetColor(255, 165, 0); //changed the colour to match the other operators(DAN)
+	ofDrawRectangle(buttonEqual); //Equal button, Decimal place button and number 0 drawn by Kieran
+	ofSetColor(180);
         ofDrawRectangle(buttonDecimal);
         ofDrawRectangle(button0);
 	//-------------------------------------
 
 
 	//------------DAN----------------------
-
+	ofSetColor(255, 165, 0);
+	ofDrawRectangle(buttonDiv);
+	ofDrawRectangle(buttonX);
+	ofDrawRectangle(buttonMinus);
+	ofDrawRectangle(buttonPlus);
+	ofSetColor(180);
+	ofDrawRectangle(button3);
  
 	//--------------------------------------
 
@@ -88,7 +100,11 @@ void ofApp::draw(){
 
 
 	//------------DAN----------------------
-
+	 testFont.drawString("/", 415, 170);
+	 testFont.drawString("X", 420, 290);
+	 testFont.drawString("-", 420, 410);
+	 testFont.drawString("+", 415, 530); 
+	 testFont.drawString("3", 300, 530);
 
 	//--------------------------------------
 
