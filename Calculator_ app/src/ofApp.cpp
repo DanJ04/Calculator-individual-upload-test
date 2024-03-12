@@ -34,9 +34,9 @@ void ofApp::setup(){
 		//--------------------------------------
 
 		//------------ANJALY-----------------------------
-                button8.set(30, 390, 80, 80);
-                button5.set(30, 480, 80, 80);
-                button2.set(30, 570, 80, 80);
+                button8.set(140, 220, 100, 100);
+                button5.set(140, 340, 100, 100);
+                button2.set(140, 460, 100, 100);
    
  
   
@@ -129,9 +129,9 @@ void ofApp::draw(){
 
 	//------------ANJALY--------------------
            //adds the text for each number
-          testFont.drawString("8", 48, 345);
-           testFont.drawString("5", 48, 445);
-           testFont.drawString("2", 48, 535);
+          testFont.drawString("8", 180, 290);
+           testFont.drawString("5", 180, 410);
+           testFont.drawString("2", 180, 530);
 
 	//--------------------------------------
 }
