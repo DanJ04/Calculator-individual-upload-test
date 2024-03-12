@@ -135,11 +135,11 @@ void ofApp::draw(){
 
 	//------------ANJALY--------------------
            //adds the text for each number
-          testFont.drawString("8", 180, 290);
+           testFont.drawString("8", 180, 290);
            testFont.drawString("5", 180, 410);
            testFont.drawString("2", 180, 530);
-	testFont.drawString("9", 300, 290);
-         testFont.drawString("6", 300, 410);
+	   testFont.drawString("9", 300, 290);
+           testFont.drawString("6", 300, 410);
 
 
 	//--------------------------------------
