@@ -61,5 +61,18 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+
+
+		//extra functions for functionality
+		void appendNumber(const string& number);
+		void processOperator(const string& op);
+		void calculate();
+	
+		//variables for functionality.
+		string currentNum;
+		string totalNum;
+		string operatorState;
+		int num1 = 0;
+		int num2 = 0;
 		
 };
