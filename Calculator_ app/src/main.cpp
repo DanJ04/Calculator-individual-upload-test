@@ -4,7 +4,7 @@
 //========================================================================
 int main( ){
 	//changed the viewport to look like a calculator.
-	ofSetupOpenGL(500,700,OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(500,740,OF_WINDOW);			// <-------- setup the GL context
 
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
