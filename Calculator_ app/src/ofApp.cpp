@@ -169,8 +169,58 @@ void ofApp::mouseDragged(int x, int y, int button) {
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
+	
+	if (button1.inside(x, y)) {
+		appendNumber("1"); // Append "1" to the current number
+	}
 
+	if (button2.inside(x, y)) {
+		appendNumber("2"); // Append "2" to the current number
+	}
+
+	if (button3.inside(x, y)) {
+		appendNumber("3"); // Append "3" to the current number
+	}
+
+	if (buttonPlus.inside(x, y)) {
+		processOperator("+"); // Process addition operator
+	}
+
+	if (buttonEqual.inside(x, y)) {
+		calculate(); // Calculate the result
+	}
 }
+
+void ofApp::appendNumber(const string& number) {
+	currentNum.append(number); // Append the given number to the current number
+	cout << currentNum << endl; // Output the updated current number 
+}
+
+void ofApp::processOperator(const string& op) {
+	if (!currentNum.empty()) {
+		num1 = stoi(currentNum); // Convert the current number to an integer and store it as num1
+		operatorState = op; // Store the operator(+,-,%....)
+		currentNum.clear(); // Clear the current number to start entering the next number
+		cout << operatorState << endl; // Output the operator 
+	}
+}
+
+void ofApp::calculate() {
+	if (!currentNum.empty()) {
+		num2 = stoi(currentNum); // Convert the current number to an integer and store it as num2
+		int Total = 0;
+		if (operatorState == "+") {
+			Total = num1 + num2; // Perform addition operation
+		}
+		cout << Total << endl; // Output the total 
+		totalNum = to_string(Total); // Store the total as a string
+		currentNum.clear(); // Clear the current number for next input
+		operatorState.clear(); // Reset the operator state for next calculation
+	}
+}
+
+
+
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
