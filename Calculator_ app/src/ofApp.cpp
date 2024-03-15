@@ -215,6 +215,10 @@ void ofApp::mousePressed(int x, int y, int button) {
 		processOperator("/"); // Process divison operator
 	}
 
+	if (buttonX.inside(x, y)) {
+		processOperator("*"); // Process multiplication operator
+	}
+
 	if (buttonEqual.inside(x, y)) {
 		calculate(); // Calculate the result
 	}
@@ -248,6 +252,12 @@ void ofApp::calculate() {
 		//Divison function(KIERAN)------------
 		if (operatorState == "/") {
 			Total = num1 / num2; // Perform divison operation
+		}
+		//-----------------------------------
+
+		//Multiplication function(Anjali)------------
+		if (operatorState == "*") {
+			Total = num1 * num2; // Perform multiplication operation
 		}
 		//-----------------------------------
 		
