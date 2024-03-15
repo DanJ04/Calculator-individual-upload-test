@@ -207,6 +207,14 @@ void ofApp::mousePressed(int x, int y, int button) {
 		processOperator("+"); // Process addition operator
 	}
 
+	if (buttonDecimal.inside(x, y)) {
+		appendNumber("."); // Process addition operator
+	}
+
+	if (buttonDiv.inside(x, y)) {
+		processOperator("/"); // Process addition operator
+	}
+
 	if (buttonEqual.inside(x, y)) {
 		calculate(); // Calculate the result
 	}
@@ -219,7 +227,7 @@ void ofApp::appendNumber(const string& number) {
 
 void ofApp::processOperator(const string& op) {
 	if (!currentNum.empty()) {
-		num1 = stoi(currentNum); // Convert the current number to an integer and store it as num1
+		num1 = stof(currentNum); // Convert the current number to an integer and store it as num1
 		operatorState = op; // Store the operator(+,-,%....)
 		currentNum.clear(); // Clear the current number to start entering the next number
 		cout << operatorState << endl; // Output the operator 
@@ -228,14 +236,21 @@ void ofApp::processOperator(const string& op) {
 
 void ofApp::calculate() {
 	if (!currentNum.empty()) {
-		num2 = stoi(currentNum); // Convert the current number to an integer and store it as num2
-		int Total = 0;
+		num2 = stof(currentNum); // Convert the current number to an integer and store it as num2
+		float Total = 0;
 
 		//Plus function(DAN)----------------
 		if (operatorState == "+") {
 			Total = num1 + num2; // Perform addition operation
 		}
 		//----------------------------------
+
+		//Divison function(KIERAN)------------
+		if (operatorState == "/") {
+			Total = num1 / num2; // Perform takeaway operation
+		}
+		//-----------------------------------
+		
 		cout << Total << endl; // Output the total 
 		totalNum = to_string(Total); // Store the total as a string
 		currentNum.clear(); // Clear the current number for next input
