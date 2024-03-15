@@ -72,7 +72,7 @@ class ofApp : public ofBaseApp{
 		string currentNum;
 		string totalNum;
 		string operatorState;
-		int num1 = 0;
-		int num2 = 0;
+		float num1 = 0;
+		float num2 = 0;
 		
 };
