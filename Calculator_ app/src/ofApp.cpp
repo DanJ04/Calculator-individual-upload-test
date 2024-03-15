@@ -208,11 +208,11 @@ void ofApp::mousePressed(int x, int y, int button) {
 	}
 
 	if (buttonDecimal.inside(x, y)) {
-		appendNumber("."); // Process addition operator
+		appendNumber("."); // Process decimal operator
 	}
 
 	if (buttonDiv.inside(x, y)) {
-		processOperator("/"); // Process addition operator
+		processOperator("/"); // Process divison operator
 	}
 
 	if (buttonEqual.inside(x, y)) {
@@ -247,7 +247,7 @@ void ofApp::calculate() {
 
 		//Divison function(KIERAN)------------
 		if (operatorState == "/") {
-			Total = num1 / num2; // Perform takeaway operation
+			Total = num1 / num2; // Perform divison operation
 		}
 		//-----------------------------------
 		
