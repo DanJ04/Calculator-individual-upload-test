@@ -181,6 +181,27 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if (button3.inside(x, y)) {
 		appendNumber("3"); // Append "3" to the current number
 	}
+	if (button4.inside(x, y)) {
+		appendNumber("4"); // Append "4" to the current number
+	}
+	if (button5.inside(x, y)) {
+		appendNumber("5"); // Append "5" to the current number
+	}
+	if (button6.inside(x, y)) {
+		appendNumber("6"); // Append "6" to the current number
+	}
+	if (button7.inside(x, y)) {
+		appendNumber("7"); // Append "7" to the current number
+	}
+	if (button8.inside(x, y)) {
+		appendNumber("8"); // Append "8" to the current number
+	}
+	if (button9.inside(x, y)) {
+		appendNumber("9"); // Append "9" to the current number
+	}
+	if (button0.inside(x, y)) {
+		appendNumber("0"); // Append "0" to the current number
+	}
 
 	if (buttonPlus.inside(x, y)) {
 		processOperator("+"); // Process addition operator
@@ -209,9 +230,12 @@ void ofApp::calculate() {
 	if (!currentNum.empty()) {
 		num2 = stoi(currentNum); // Convert the current number to an integer and store it as num2
 		int Total = 0;
+
+		//Plus function(DAN)----------------
 		if (operatorState == "+") {
 			Total = num1 + num2; // Perform addition operation
 		}
+		//----------------------------------
 		cout << Total << endl; // Output the total 
 		totalNum = to_string(Total); // Store the total as a string
 		currentNum.clear(); // Clear the current number for next input
