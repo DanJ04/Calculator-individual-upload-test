@@ -222,6 +222,10 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if (buttonEqual.inside(x, y)) {
 		calculate(); // Calculate the result
 	}
+
+	if  (buttonMinus.inside (x, y)) {
+		processOperator("-"); // process substraction operator
+	}
 }
 
 void ofApp::appendNumber(const string& number) {
@@ -259,7 +263,11 @@ void ofApp::calculate() {
 		if (operatorState == "*") {
 			Total = num1 * num2; // Perform multiplication operation
 		}
-		//-----------------------------------
+		//Substraction function(Anjaly)-----------------------------------
+                if (operatorState == "-") {
+			Total = num1 - num2; // perform substraction operation
+		}
+	
 		
 		cout << Total << endl; // Output the total 
 		totalNum = to_string(Total); // Store the total as a string
