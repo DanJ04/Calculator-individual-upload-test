@@ -45,6 +45,8 @@ class ofApp : public ofBaseApp{
                    ofRectangle button2;
                    ofRectangle button9;
                    ofRectangle button6;
+                   ofRectangle button%;
+
 
 
 		//--------------------------------------
