@@ -40,7 +40,7 @@ void ofApp::setup() {
 	button2.set(140, 500, 100, 100);
 	button9.set(260, 260, 100, 100);
 	button6.set(260, 380, 100, 100);
-	button%.set(260, 140, 100, 100);
+	buttonPercentage.set(260, 140, 100, 100);
 
 
 
@@ -99,7 +99,7 @@ void ofApp::draw() {
 	ofDrawRectangle(button2);
 	ofDrawRectangle(button9);
 	ofDrawRectangle(button6);
-	ofDrawRectangle(button%);
+	ofDrawRectangle(buttonPercentage);
 
 
 
@@ -234,7 +234,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		appendNumber("-"); //negative integers
 	}
 
-	if (button%.inside(x, y)) {
+	if (buttonPercentage.inside(x, y)) {
 	percentage(); // Process percentage function
 	}
 
