@@ -39,6 +39,7 @@ void ofApp::setup() {
 	button2.set(140, 500, 100, 100);
 	button9.set(260, 260, 100, 100);
 	button6.set(260, 380, 100, 100);
+	button%.set(260, 140, 100, 100);
 
 
 
@@ -97,6 +98,7 @@ void ofApp::draw() {
 	ofDrawRectangle(button2);
 	ofDrawRectangle(button9);
 	ofDrawRectangle(button6);
+	ofDrawRectangle(button%);
 
 
 
@@ -142,6 +144,7 @@ void ofApp::draw() {
 	testFont.drawString("2", 180, 570);
 	testFont.drawString("9", 300, 330);
 	testFont.drawString("6", 300, 450);
+        testFont.drawString("%", 285, 210);
 
 
 	//--------------------------------------
