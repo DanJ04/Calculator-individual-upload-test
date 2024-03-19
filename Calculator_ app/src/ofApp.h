@@ -69,6 +69,8 @@ class ofApp : public ofBaseApp{
 		void appendNumber(const string& number);
 		void processOperator(const string& op);
 		void calculate();
+                void percentage();
+
 	
 		//variables for functionality.
 		string currentNum;
