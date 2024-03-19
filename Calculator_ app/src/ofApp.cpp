@@ -234,7 +234,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		appendNumber("-"); //negative integers
 	}
 
-	if (buttonPercentage.inside(x, y)) {
+	if (button%.inside(x, y)) {
 	percentage(); // Process percentage function
 	}
 
