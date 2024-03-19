@@ -226,6 +226,9 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if  (buttonMinus.inside (x, y)) {
 		processOperator("-"); // process substraction operator
 	}
+	if (buttonPandN.inside(x, y)) {
+		appendNumber("-"); //negative integers
+	}
 
 	if (buttonClear.inside(x, y)) {
 	currentNum.clear(); // Clear the current number
