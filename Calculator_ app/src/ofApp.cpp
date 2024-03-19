@@ -226,6 +226,13 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if  (buttonMinus.inside (x, y)) {
 		processOperator("-"); // process substraction operator
 	}
+
+	if (buttonClear.inside(x, y)) {
+	currentNum.clear(); // Clear the current number
+	totalNum.clear(); // Clear the total number
+	operatorState.clear(); // Clear the operator state
+	return; // Return to avoid executing other button checks
+	}
 }
 
 void ofApp::appendNumber(const string& number) {
