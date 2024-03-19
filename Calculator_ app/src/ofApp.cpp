@@ -4,6 +4,7 @@
 void ofApp::setup() {
 	//loads font
 	testFont.load("Calculator.ttf", 50);
+	resultSound.load("videoplayback.WAV");
 
 	//---------KIERAN----------------------
 	button1.set(20, 500, 100, 100);
@@ -300,6 +301,7 @@ void ofApp::calculate() {
 		totalNum = to_string(Total); // Store the total as a string
 		currentNum.clear(); // Clear the current number for next input
 		operatorState.clear(); // Reset the operator state for next calculation
+		resultSound.play();
 	}
 }
 
