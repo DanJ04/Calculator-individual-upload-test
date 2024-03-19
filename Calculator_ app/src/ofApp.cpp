@@ -233,6 +233,10 @@ void ofApp::mousePressed(int x, int y, int button) {
 		appendNumber("-"); //negative integers
 	}
 
+	if (buttonPercentage.inside(x, y)) {
+	percentage(); // Process percentage function
+	}
+
 	if (buttonClear.inside(x, y)) {
 	currentNum.clear(); // Clear the current number
 	totalNum.clear(); // Clear the total number
@@ -240,6 +244,16 @@ void ofApp::mousePressed(int x, int y, int button) {
 	return; // Return to avoid executing other button checks
 	}
 }
+
+void ofApp::percentage() {
+	if (!currentNum.empty()) {
+		float currentNumber =  stof(currentNum); // Convert the current number to a float
+		float result = currentNumber * 0.01; // Calculate the percentage
+		currentNum = to_string(result);// Convert the result back to a string
+		cout << "%" << endl; // Output the percentage symbol 
+	}
+}
+
 
 void ofApp::appendNumber(const string& number) {
 	currentNum.append(number); // Append the given number to the current number
