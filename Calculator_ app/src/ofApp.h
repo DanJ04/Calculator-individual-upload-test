@@ -11,6 +11,7 @@ class ofApp : public ofBaseApp{
 		void draw();
 
 		ofTrueTypeFont testFont;
+		ofSoundPlayer resultSound;
                 //---------KIERAN----------------------
 		ofRectangle button1;
 		ofRectangle buttonEqual;
