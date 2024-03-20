@@ -10,7 +10,7 @@ void ofApp::setup() {
 	button1.set(20, 500, 100, 100);
 	buttonEqual.set(380, 620, 100, 100); //Setup of buttons pushed by kieran
 	buttonDecimal.set(260, 620, 100, 100);
-	button0.set(140,620, 100, 100);
+	button0.set(140, 620, 100, 100);
 	//-------------------------------------
 
 
@@ -25,7 +25,7 @@ void ofApp::setup() {
 
 
 	//------------ANJALI--------------------
-    //buttonInterface.set(20, 20, 460, 100); // an idea for the size of the interface
+	//buttonInterface.set(20, 20, 460, 100); // an idea for the size of the interface
 	buttonClear.set(20, 140, 100, 100);
 	button7.set(20, 260, 100, 100);
 	button4.set(20, 380, 100, 100);
@@ -41,11 +41,6 @@ void ofApp::setup() {
 	button9.set(260, 260, 100, 100);
 	button6.set(260, 380, 100, 100);
 	buttonPercentage.set(260, 140, 100, 100);
-
-
-
-
-
 	//--------------------------------------
 
 
@@ -100,10 +95,6 @@ void ofApp::draw() {
 	ofDrawRectangle(button9);
 	ofDrawRectangle(button6);
 	ofDrawRectangle(buttonPercentage);
-
-
-
-
 	//--------------------------------------
 
 
@@ -145,7 +136,7 @@ void ofApp::draw() {
 	testFont.drawString("2", 180, 570);
 	testFont.drawString("9", 300, 330);
 	testFont.drawString("6", 300, 450);
-        testFont.drawString("%", 285, 210);
+	testFont.drawString("%", 285, 210);
 
 
 	//--------------------------------------
@@ -173,7 +164,7 @@ void ofApp::mouseDragged(int x, int y, int button) {
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-	
+
 	if (button1.inside(x, y)) {
 		appendNumber("1"); // Append "1" to the current number
 	}
@@ -227,7 +218,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		calculate(); // Calculate the result
 	}
 
-	if  (buttonMinus.inside (x, y)) {
+	if (buttonMinus.inside(x, y)) {
 		processOperator("-"); // process substraction operator
 	}
 	if (buttonPandN.inside(x, y)) {
@@ -235,71 +226,111 @@ void ofApp::mousePressed(int x, int y, int button) {
 	}
 
 	if (buttonPercentage.inside(x, y)) {
-	percentage(); // Process percentage function
+		percentage(); // Process percentage function
 	}
 
 	if (buttonClear.inside(x, y)) {
-	currentNum.clear(); // Clear the current number
-	totalNum.clear(); // Clear the total number
-	operatorState.clear(); // Clear the operator state
-	return; // Return to avoid executing other button checks
+		currentNum.clear(); // Clear the current number
+		totalNum.clear(); // Clear the total number
+		operatorState.clear(); // Clear the operator state
+		return; // Return to avoid executing other button checks
 	}
 }
+// Declare a member variable to store the running total
+float runningTotal = 0;
 
+// Declare a member variable to indicate whether the calculation has been performed
+bool calculationPerformed = false;
 void ofApp::percentage() {
 	if (!currentNum.empty()) {
-		float currentNumber =  stof(currentNum); // Convert the current number to a float
+		float currentNumber = stof(currentNum); // Convert the current number to a float
 		float result = currentNumber * 0.01; // Calculate the percentage
-		currentNum = to_string(result);// Convert the result back to a string
-		cout << "%" << endl; // Output the percentage symbol 
+		runningTotal = result; // Update the running total with the percentage
+		cout << "Percentage Calculated: %" << endl; // Output the percentage symbol 
 	}
 }
-
 
 void ofApp::appendNumber(const string& number) {
 	currentNum.append(number); // Append the given number to the current number
-	cout << currentNum << endl; // Output the updated current number 
+	cout << "Number Appended: " << currentNum << endl; // Output the updated current number 
 }
 
 void ofApp::processOperator(const string& op) {
-	if (!currentNum.empty()) {
-		num1 = stof(currentNum); // Convert the current number to an integer and store it as num1
-		operatorState = op; // Store the operator(+,-,%....)
-		currentNum.clear(); // Clear the current number to start entering the next number
-		cout << operatorState << endl; // Output the operator 
+	if (!calculationPerformed) {
+		// If no calculation has been performed, store the current number and the operator
+		if (!currentNum.empty()) {
+			runningTotal = stof(currentNum); // Set the running total to the current number
+			operatorState = op; // Store the operator
+			calculationPerformed = true; // Mark that calculation has been performed
+			currentNum.clear(); // Clear the current number to start entering the next number
+			cout << "Operator Pressed: " << operatorState << endl; // Output the operator
+		}
+		else {
+			cout << "Invalid Operation: No current number entered" << endl;
+		}
+	}
+	else {
+		// If a calculation has been performed, add the current number to the running total
+		if (!currentNum.empty()) {
+			float num2 = stof(currentNum); // Convert the current number to a float
+			if (operatorState == "+") {
+				runningTotal += num2; // Perform addition operation
+			}
+			else if (operatorState == "/") {
+				if (num2 != 0) { // Check if divisor is not zero
+					runningTotal /= num2; // Perform division operation
+				}
+				else {
+					// Handle division by zero error
+					cout << "Error: Division by zero" << endl;
+					return;
+				}
+			}
+			else if (operatorState == "*") {
+				runningTotal *= num2; // Perform multiplication operation
+			}
+			else if (operatorState == "-") {
+				runningTotal -= num2; // Perform subtraction operation
+			}
+
+			operatorState = op; // Store the new operator
+			currentNum.clear(); // Clear the current number to start entering the next number
+			cout << "Operator Pressed: " << operatorState << endl; // Output the operator
+		}
+		else {
+			cout << "Invalid Operation: No current number entered" << endl;
+		}
 	}
 }
 
+
 void ofApp::calculate() {
 	if (!currentNum.empty()) {
-		num2 = stof(currentNum); // Convert the current number to an integer and store it as num2
-		float Total = 0;
-
-		//Plus function(DAN)----------------
+		float num2 = stof(currentNum); // Convert the current number to a float
 		if (operatorState == "+") {
-			Total = num1 + num2; // Perform addition operation
+			runningTotal += num2; // Perform addition operation
 		}
-		//----------------------------------
+		else if (operatorState == "/") {
+			if (num2 != 0) { // Check if divisor is not zero
+				runningTotal /= num2; // Perform division operation
+			}
+			else {
+				// Handle division by zero error
+				cout << "Error: Division by zero" << endl;
+				return;
+			}
+		}
+		else if (operatorState == "*") {
+			runningTotal *= num2; // Perform multiplication operation
+		}
+		else if (operatorState == "-") {
+			runningTotal -= num2; // Perform subtraction operation
+		}
 
-		//Divison function(KIERAN)------------
-		if (operatorState == "/") {
-			Total = num1 / num2; // Perform divison operation
-		}
-		//-----------------------------------
+		// Set the current number to the running total for subsequent operations(continuous function)
+		currentNum = to_string(runningTotal);
 
-		//Multiplication function(Anjali)------------
-		if (operatorState == "*") {
-			Total = num1 * num2; // Perform multiplication operation
-		}
-		//Substraction function(Anjaly)-----------------------------------
-                if (operatorState == "-") {
-			Total = num1 - num2; // perform substraction operation
-		}
-	
-		
-		cout << Total << endl; // Output the total 
-		totalNum = to_string(Total); // Store the total as a string
-		currentNum.clear(); // Clear the current number for next input
+		cout << "Total Calculated: " << runningTotal << endl; // Output the running total 
 		operatorState.clear(); // Reset the operator state for next calculation
 		resultSound.play();
 	}
