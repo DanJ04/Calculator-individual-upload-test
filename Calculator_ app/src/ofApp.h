@@ -79,5 +79,11 @@ class ofApp : public ofBaseApp{
 		string operatorState;
 		float num1 = 0;
 		float num2 = 0;
+
+// Declare a member variable to store the running total
+float runningTotal = 0;
+
+// Declare a member variable to indicate whether the calculation has been performed
+bool calculationPerformed = false;
 		
 };
