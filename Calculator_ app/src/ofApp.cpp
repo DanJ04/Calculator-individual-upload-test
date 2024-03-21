@@ -40,10 +40,16 @@ void ofApp::setup() {
 	button9.set(260, 260, 100, 100);
 	button6.set(260, 380, 100, 100);
 	buttonPercentage.set(260, 140, 100, 100);
+	 buttonPi.set(20, 140, 100, 100);
 	//--------------------------------------
 
 	//--------buttons for the HEX page-----------------
-
+      buttonA.set(20, 356, 100, 76);
+      buttonB.set(140, 356, 100, 76);
+      buttonC.set(260, 356, 100, 76);
+      buttonD.set(20,260 , 100, 76);
+      buttonE.set(140,260 , 100, 76);
+      buttonF.set(260, 260, 100, 76);
 
 
 	//------------ANJALY--------------------
@@ -114,6 +120,7 @@ void ofApp::draw() {
 			ofDrawRectangle(button9);
 			ofDrawRectangle(button6);
 			ofDrawRectangle(buttonPercentage);
+			ofDrawRectangle(buttonPi);
 			//--------------------------------------
 
 
@@ -166,12 +173,40 @@ void ofApp::draw() {
 		case HEX_SCREEN:
 			ofBackground(0);
 			ofSetColor(180);
-			
+                
+                        //-----------------anjaly-------
+			ofDrawRectangle(buttonA);
+                        ofDrawRectangle(buttonB);
+                        ofDrawRectangle(buttonC);
+                        ofDrawRectangle(buttonD);
+                        ofDrawRectangle(buttonE);
+                         ofDrawRectangle(buttonF);
+			//---------------anjali----------
 			ofDrawRectangle(buttonHEX);
+
+
+
+			
 		
 			//--------------------------------------
 			ofSetColor(255);
-			testFont.drawString("HEX", 150, 210);
+			testFont.drawString("HEX", 150, 210);    
+                      testFont.drawString("C", 55, 210);
+                      testFont.drawString("%", 285, 210);
+                     testFont.drawString("/", 415, 210);
+                     testFont.drawString("X", 420, 330);
+                     testFont.drawString("-", 420, 450);
+                     testFont.drawString("+", 415, 570);
+                     testFont.drawString("=", 420, 690);
+
+                     //------------------------------------
+                      testFont.drawString("A", 50, 416);
+                      testFont.drawString("B", 175, 416);
+                      testFont.drawString("C", 295, 416);
+                      testFont.drawString("D", 50, 320);
+                       testFont.drawString("E", 175, 320);
+                       testFont.drawString("F", 295, 320);
+
 		
 		        //--------------------------------------
 		break;
