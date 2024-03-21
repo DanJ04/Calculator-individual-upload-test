@@ -62,12 +62,18 @@ class ofApp : public ofBaseApp{
                    ofRectangle button9;
                    ofRectangle button6;
                    ofRectangle buttonPercentage;
+                   ofRectangle buttonPi;
 
 
 		//--------buttons for the HEX page-----------------
-
-
-
+             //---------------anjaly-------------------------------
+                        ofRectangle buttonA;
+                        ofRectangle buttonB;
+                        ofRectangle buttonC;
+                        ofRectangle buttonD;
+                         ofRectangle buttonE;
+                         ofRectangle buttonF;
+        
 		//------------ANJALI--------------------
 
 
@@ -103,7 +109,8 @@ class ofApp : public ofBaseApp{
 		void processOperator(const string& op);
 		void calculate();
                 void percentage();
-
+                 void ValueOfPi();
+      
 	
 		//variables for functionality.
 		string currentNum;
