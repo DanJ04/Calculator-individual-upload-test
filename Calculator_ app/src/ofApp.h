@@ -6,6 +6,20 @@
 class ofApp : public ofBaseApp{
 
 	public:
+
+		//--------------------------------------
+		// a new screen for the HEX page
+		enum ScreenState {
+			MAIN_SCREEN,
+			HEX_SCREEN,
+		};
+
+		// always start with the main screen
+		ScreenState currentScreen = MAIN_SCREEN;
+
+		//--------------------------------------
+
+
 		void setup();
 		void update();
 		void draw();
@@ -47,6 +61,23 @@ class ofApp : public ofBaseApp{
                    ofRectangle button9;
                    ofRectangle button6;
                    ofRectangle buttonPercentage;
+
+
+		//--------buttons for the HEX page-----------------
+
+
+
+		//------------ANJALY--------------------
+
+
+
+		//--------------------------------------
+
+
+		//------------ANJALY--------------------
+
+
+		//--------------------------------------
 
 
 
