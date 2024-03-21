@@ -49,6 +49,7 @@ class ofApp : public ofBaseApp{
                 ofRectangle button7;
                 ofRectangle button4;
                 ofRectangle buttonPandN; // plus and minus sign for positive and negative numbers
+                ofRectangle buttonHEX;
 
 
 		//--------------------------------------
@@ -67,7 +68,7 @@ class ofApp : public ofBaseApp{
 
 
 
-		//------------ANJALY--------------------
+		//------------ANJALI--------------------
 
 
 
