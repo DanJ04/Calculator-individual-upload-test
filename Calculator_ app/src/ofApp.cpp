@@ -25,7 +25,7 @@ void ofApp::setup() {
 
 
 	//------------ANJALI--------------------
-	buttonClear.set(20, 140, 100, 100);
+	buttonClear.set(20, 20, 100, 100);
 	button7.set(20, 260, 100, 100);
 	button4.set(20, 380, 100, 100);
 	buttonPandN.set(20, 620, 100, 100); // plus and minus sign for positive and negative numbers
@@ -162,7 +162,7 @@ void ofApp::draw() {
 
 
 			//------------ANJALI--------------------
-			testFont.drawString("C", 55, 210); // Clear number drawn
+			testFont.drawString("C", 55, 90); // Clear number drawn
 			testFont.drawString("7", 55, 330);
 			testFont.drawString("4", 55, 450);
 			testFont.drawString("+/-", 30, 690); // plus and minus sign drawn
@@ -179,6 +179,8 @@ void ofApp::draw() {
 			testFont.drawString("9", 300, 330);
 			testFont.drawString("6", 300, 450);
 			testFont.drawString("%", 285, 210);
+			testFont.drawString("pi", 55, 210);
+
 
 
 			//--------------------------------------
