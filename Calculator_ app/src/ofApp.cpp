@@ -352,9 +352,13 @@ void ofApp::mousePressed(int x, int y, int button) {
 			if (buttonPercentage.inside(x, y)) {
 				percentage(); // Process percentage function
 			}
+			if (buttonPi.inside(x, y)) {
+	                        ValueOfPi(); // Process pi function
+                        }
+
 
 			if (buttonClear.inside(x, y)) {
-				currentNum.clear(); // Clear the current number
+		       		currentNum.clear(); // Clear the current number
 				totalNum.clear(); // Clear the total number
 				operatorState.clear(); // Clear the operator state
 				runningTotal = 0; // Reset the running total to zero
@@ -384,7 +388,14 @@ void ofApp::percentage() {
 
 }
 }
-
+void ofApp::ValueOfPi() {
+	if (!currentNum.empty()) {
+		float currentNumber = stof(currentNum); // Convert the current number to a float
+		float result = currentNumber * 3.14159265359; // Calculate the pi
+		currentNum = to_string(result);  // Update the running total with the pi
+		cout << "pi Calculated:pi" << endl; // Output the pi symbol 
+	}
+}
 void ofApp::appendNumber(const string& number) {
 	currentNum.append(number); // Append the given number to the current number
 	cout << "Number Appended: " << currentNum << endl; // Output the updated current number 
