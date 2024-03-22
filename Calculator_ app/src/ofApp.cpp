@@ -378,9 +378,11 @@ void ofApp::percentage() {
 	if (!currentNum.empty()) {
 		float currentNumber = stof(currentNum); // Convert the current number to a float
 		float result = currentNumber * 0.01; // Calculate the percentage
-		runningTotal = result; // Update the running total with the percentage
+		currentNum = to_string(result); // Update the running total with the percentage
 		cout << "Percentage Calculated: %" << endl; // Output the percentage symbol 
 	}
+
+}
 }
 
 void ofApp::appendNumber(const string& number) {
