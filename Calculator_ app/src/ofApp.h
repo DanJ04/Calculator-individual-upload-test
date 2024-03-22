@@ -75,16 +75,29 @@ class ofApp : public ofBaseApp{
                          ofRectangle buttonF;
         
 		//------------ANJALI--------------------
+                ofRectangle buttonh1;
+                ofRectangle buttonh2;
+                ofRectangle buttonh3;
+                ofRectangle buttonh4;
+                ofRectangle buttonh5;
+                ofRectangle buttonh6;
+                ofRectangle buttonh7;
+                ofRectangle buttonh8;
+                ofRectangle buttonh9;
+                ofRectangle buttonh0;
 
+                ofRectangle buttonPlusH;
+                ofRectangle buttonXH;
+                ofRectangle buttonMinusH;
+                ofRectangle buttonDivH;
 
+                ofRectangle buttonEqualH;
+
+                ofRectangle buttonClearH;
 
 		//--------------------------------------
 
 
-		//------------ANJALY--------------------
-
-
-		//--------------------------------------
 
 
 
