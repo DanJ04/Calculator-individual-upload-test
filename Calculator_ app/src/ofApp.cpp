@@ -179,7 +179,7 @@ void ofApp::draw() {
 			testFont.drawString("9", 300, 330);
 			testFont.drawString("6", 300, 450);
 			testFont.drawString("%", 285, 210);
-			testFont.drawString("pi", 55, 210);
+			testFont.drawString("pi", 55, 200);
 
 
 
