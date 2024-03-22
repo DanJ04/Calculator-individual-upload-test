@@ -40,23 +40,41 @@ void ofApp::setup() {
 	button9.set(260, 260, 100, 100);
 	button6.set(260, 380, 100, 100);
 	buttonPercentage.set(260, 140, 100, 100);
-	 buttonPi.set(20, 140, 100, 100);
+	buttonPi.set(20, 140, 100, 100);
 	//--------------------------------------
 
 	//--------buttons for the HEX page-----------------
 
 	//------------Anjaly-------------------------
-      buttonA.set(20, 356, 100, 76);
-      buttonB.set(140, 356, 100, 76);
-      buttonC.set(260, 356, 100, 76);
-      buttonD.set(20,260 , 100, 76);
-      buttonE.set(140,260 , 100, 76);
-      buttonF.set(260, 260, 100, 76);
-     //--------------------------------------
+        buttonA.set(20, 356, 100, 76);
+        buttonB.set(140, 356, 100, 76);
+        buttonC.set(260, 356, 100, 76);
+        buttonD.set(20,260 , 100, 76);
+        buttonE.set(140,260 , 100, 76);
+        buttonF.set(260, 260, 100, 76);
+        //--------------------------------------
 
 	
 
 	//------------ANJALI--------------------
+	buttonh1.set(20, 644, 100, 76);
+	buttonh2.set(140, 644, 100, 76);
+	buttonh3.set(260, 644, 100, 76);
+	buttonh4.set(20, 548, 100, 76);
+	buttonh5.set(140, 548, 100, 76);
+	buttonh6.set(260, 548, 100, 76);
+	buttonh7.set(20, 452, 100, 76);
+	buttonh8.set(140, 452, 100, 76);
+	buttonh9.set(260, 452, 100, 76);
+	buttonh0.set(380, 620, 100, 100);
+
+	buttonDivH.set(260, 140, 100, 100);
+	buttonXH.set(380, 140, 100, 100);
+	buttonMinusH.set(380, 260, 100, 100);
+	buttonPlusH.set(380, 380, 100, 100);
+	buttonEqualH.set(380, 500, 100, 100);
+
+	buttonClearH.set(20, 140, 100, 100);
 
 
 	//--------------------------------------
@@ -177,34 +195,64 @@ void ofApp::draw() {
                         ofDrawRectangle(buttonC);
                         ofDrawRectangle(buttonD);
                         ofDrawRectangle(buttonE);
-                         ofDrawRectangle(buttonF);
+                        ofDrawRectangle(buttonF);
+			
 			//---------------anjali----------
 			ofDrawRectangle(buttonHEX);
+			ofDrawRectangle(buttonClearH);
+			ofDrawRectangle(buttonh1);
+			ofDrawRectangle(buttonh2);
+			ofDrawRectangle(buttonh3);
+			ofDrawRectangle(buttonh4);
+			ofDrawRectangle(buttonh5);
+			ofDrawRectangle(buttonh6);
+			ofDrawRectangle(buttonh7);
+			ofDrawRectangle(buttonh8);
+			ofDrawRectangle(buttonh9);
+			ofDrawRectangle(buttonh0);
+
+			ofSetColor(255, 165, 0);
+			ofDrawRectangle(buttonDivH);
+			ofDrawRectangle(buttonXH);
+			ofDrawRectangle(buttonMinusH);
+			ofDrawRectangle(buttonPlusH);
+			ofDrawRectangle(buttonEqualH);
 
 
 
 			
 		
-			//--------------------------------------
+			//--------------Anjali------------------------
 			ofSetColor(255);
-			testFont.drawString("HEX", 150, 210);    
-                      testFont.drawString("C", 55, 210);
-                      testFont.drawString("%", 285, 210);
-                     testFont.drawString("/", 415, 210);
-                     testFont.drawString("X", 420, 330);
-                     testFont.drawString("-", 420, 450);
-                     testFont.drawString("+", 415, 570);
-                     testFont.drawString("=", 420, 690);
+			testFont.drawString("HEX", 150, 210);
+			testFont.drawString("C", 55, 210);
 
-                     //------------------------------------
-                      testFont.drawString("A", 50, 416);
-                      testFont.drawString("B", 175, 416);
-                      testFont.drawString("C", 295, 416);
-                      testFont.drawString("D", 50, 320);
-                       testFont.drawString("E", 175, 320);
-                       testFont.drawString("F", 295, 320);
+			testFont.drawString("/", 285, 210);
+			testFont.drawString("X", 420, 210);
+			testFont.drawString("-", 420, 330);
+			testFont.drawString("+", 415, 450);
+			testFont.drawString("=", 420, 570);
 
-		
+			testFont.drawString("1", 50, 704);
+			testFont.drawString("2", 175, 704);
+			testFont.drawString("3", 295, 704);
+			testFont.drawString("4", 50, 608);
+			testFont.drawString("5", 175, 608);
+			testFont.drawString("6", 295, 608);
+			testFont.drawString("7", 50, 512);
+			testFont.drawString("8", 175, 512);
+			testFont.drawString("9", 295, 512);
+			testFont.drawString("0", 420, 690);
+
+
+                        //-------------Anjaly-----------------------
+                        testFont.drawString("A", 50, 416);
+                        testFont.drawString("B", 175, 416);
+                        testFont.drawString("C", 295, 416);
+                        testFont.drawString("D", 50, 320);
+                        testFont.drawString("E", 175, 320);
+                        testFont.drawString("F", 295, 320);
+
 		        //--------------------------------------
 		break;
 	}
