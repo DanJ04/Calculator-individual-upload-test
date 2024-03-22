@@ -387,7 +387,6 @@ void ofApp::percentage() {
 	}
 
 }
-}
 void ofApp::ValueOfPi() {
 	if (!currentNum.empty()) {
 		float currentNumber = stof(currentNum); // Convert the current number to a float
