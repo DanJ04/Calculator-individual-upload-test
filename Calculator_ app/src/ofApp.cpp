@@ -56,7 +56,7 @@ void ofApp::setup() {
 
 
 
-//------------ANJALI--------------------
+        //------------ANJALI--------------------
 	buttonh1.set(20, 644, 100, 76);
 	buttonh2.set(140, 644, 100, 76);
 	buttonh3.set(260, 644, 100, 76);
@@ -194,6 +194,8 @@ void ofApp::draw() {
 	case HEX_SCREEN:
 		ofBackground(0);
 		ofSetColor(180);
+		testFont.drawString(operatorState, 415, 100);
+                testFont.drawString(currentNum, 150, 100);
 
 		//-----------------anjaly-------
 		ofDrawRectangle(buttonA);
@@ -404,8 +406,107 @@ void ofApp::mousePressed(int x, int y, int button) {
 			// Switch to the main screen
 			currentScreen = MAIN_SCREEN;
 		}
+				if (buttonh1.inside(x, y)) {
+			appendNumber("1"); // Append "1" to the current number
+		}
+		if (buttonh2.inside(x, y)) {
+			appendNumber("2"); // Append "2" to the current number
+		}
+		if (buttonh3.inside(x, y)) {
+			appendNumber("3"); // Append "3" to the current number
+		}
+		if (buttonh4.inside(x, y)) {
+			appendNumber("4"); // Append "4" to the current number
+		}
+		if (buttonh5.inside(x, y)) {
+			appendNumber("5"); // Append "5" to the current number
+		}
+		if (buttonh6.inside(x, y)) {
+			appendNumber("6"); // Append "6" to the current number
+		}
+		if (buttonh7.inside(x, y)) {
+			appendNumber("7"); // Append "7" to the current number
+		}
+		if (buttonh8.inside(x, y)) {
+			appendNumber("8"); // Append "8" to the current number
+		}
+		if (buttonh9.inside(x, y)) {
+			appendNumber("9"); // Append "9" to the current number
+		}
+		if (buttonh0.inside(x, y)) {
+			appendNumber("0"); // Append "0" to the current number
+		}
+
+
+		if (buttonA.inside(x, y)) {
+			appendNumber("A"); // Append "A" to the current number
+		}
+		if (buttonB.inside(x, y)) {
+			appendNumber("B"); // Append "B" to the current number
+		}
+		if (buttonC.inside(x, y)) {
+			appendNumber("C"); // Append "C" to the current number
+		}
+		if (buttonD.inside(x, y)) {
+			appendNumber("D"); // Append "D" to the current number
+		}
+		if (buttonE.inside(x, y)) {
+			appendNumber("E"); // Append "E" to the current number
+		}
+		if (buttonF.inside(x, y)) {
+			appendNumber("F"); // Append "F" to the current number
+		}
+
+
+		if (buttonPlusH.inside(x, y)) {
+			currentNum = hexToDecimal(); // convert the hex number to decimal
+			processOperator("+"); // Process addition operator
+		}
+		if (buttonMinusH.inside(x, y)) {
+			currentNum = hexToDecimal(); // convert the hex number to decimal
+			processOperator("-"); // process substraction operator
+		}
+		if (buttonDivH.inside(x, y)) {
+			currentNum = hexToDecimal(); // convert the hex number to decimal
+			processOperator("/"); // Process divison operator
+		}
+		if (buttonXH.inside(x, y)) {
+			currentNum = hexToDecimal(); // convert the hex number to decimal
+			processOperator("*"); // Process multiplication operator
+		}
+
+		if (buttonEqualH.inside(x, y)) {
+			currentNum = hexToDecimal(); // convert the hex number to decimal
+			calculate(); // Calculate the result
+		}
+
+		if (buttonClearH.inside(x, y)) {
+			currentNum.clear(); // Clear the current number
+			totalNum.clear(); // Clear the total number
+			operatorState.clear(); // Clear the operator state
+			runningTotal = 0; // Reset the running total to zero
+			calculationPerformed = false;
+			decimalRepeat = false;
+			return; // Return to avoid executing other button checks
+		}
 		break;
 	}
+}
+
+
+string ofApp::hexToDecimal() {
+	// Construct the API URL
+	std::string url = "https://networkcalc.com/api/binary/" + currentNum + "?from=16";
+
+	// Load JSON from the API
+	ofxJSONElement json;
+	if (!json.open(url)) {
+		ofLogError() << "Failed to parse JSON from API";
+		return " ";
+	}
+	
+	return json["converted"].asString();
+
 }
 
 void ofApp::percentage() {
