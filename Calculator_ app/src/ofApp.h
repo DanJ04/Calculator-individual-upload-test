@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxJSON.h"
 
 class ofApp : public ofBaseApp{
 
@@ -142,5 +143,9 @@ bool buttonPNClicked = false;
 bool buttonClicked = false;
 bool isNegative = false; // Track whether the number is negative or positive
 bool decimalRepeat = false;
+
+//converting hex number to decimal
+ofxJSONElement json;
+string hexToDecimal();
 		
 };
