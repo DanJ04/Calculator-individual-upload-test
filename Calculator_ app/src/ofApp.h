@@ -137,6 +137,10 @@ float runningTotal = 0;
 
 // Declare a member variable to indicate whether the calculation has been performed
 bool calculationPerformed = false;
+bool isNewNumber = true;
 bool buttonPNClicked = false;
+bool buttonClicked = false;
+bool isNegative = false; // Track whether the number is negative or positive
+bool decimalRepeat = false;
 		
 };
