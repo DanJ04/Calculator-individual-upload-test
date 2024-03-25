@@ -137,5 +137,6 @@ float runningTotal = 0;
 
 // Declare a member variable to indicate whether the calculation has been performed
 bool calculationPerformed = false;
+bool buttonPNclicked = false;
 		
 };
