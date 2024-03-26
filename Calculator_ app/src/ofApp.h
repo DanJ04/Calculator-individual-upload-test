@@ -123,7 +123,9 @@ class ofApp : public ofBaseApp{
 		void processOperator(const string& op);
 		void calculate();
                 void percentage();
-                 void ValueOfPi();
+                void ValueOfPi();
+                void Clear();
+
       
 	
 		//variables for functionality.
