@@ -295,6 +295,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		if (buttonHEX.inside(x, y)) {
 			// Switch to the hex screen
 			currentScreen = HEX_SCREEN;
+			Clear();
 		}
 		if (button1.inside(x, y)) {
 			appendNumber("1"); // Append "1" to the current number
@@ -389,13 +390,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 
 
 		if (buttonClear.inside(x, y)) {
-			currentNum.clear(); // Clear the current number
-			totalNum.clear(); // Clear the total number
-			operatorState.clear(); // Clear the operator state
-			runningTotal = 0; // Reset the running total to zero
-			calculationPerformed = false; 
-			decimalRepeat = false;
-			return; // Return to avoid executing other button checks
+			Clear();
 		}
 
 		break;
@@ -405,6 +400,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		if (buttonHEX.inside(x, y)) {
 			// Switch to the main screen
 			currentScreen = MAIN_SCREEN;
+			Clear();
 		}
 				if (buttonh1.inside(x, y)) {
 			appendNumber("1"); // Append "1" to the current number
@@ -476,25 +472,29 @@ void ofApp::mousePressed(int x, int y, int button) {
 		}
 
 		if (buttonEqualH.inside(x, y)) {
-			currentNum = hexToDecimal(); // convert the hex number to decimal
+			currentNum = hexToDecimal();// convert the hex number to decimal
+			cout << "Decimal"<< endl;
 			calculate(); // Calculate the result
-			string hexnum = DecimalTohex();//output the coverted hex number of the decimal
-			cout << "Total Calculated in HEX: " + hexnum << endl;
+			currentNum = DecimalTohex();//covert the decimal to hexadecimal
+			cout << "Hexadecimal\nTotal Calculated: " + currentNum << endl;
 		}
 
 		if (buttonClearH.inside(x, y)) {
-			currentNum.clear(); // Clear the current number
-			totalNum.clear(); // Clear the total number
-			operatorState.clear(); // Clear the operator state
-			runningTotal = 0; // Reset the running total to zero
-			calculationPerformed = false;
-			decimalRepeat = false;
-			return; // Return to avoid executing other button checks
+			Clear();
 		}
 		break;
 	}
 }
 
+void ofApp::Clear() {
+	currentNum.clear(); // Clear the current number
+	totalNum.clear(); // Clear the total number
+	operatorState.clear(); // Clear the operator state
+	runningTotal = 0; // Reset the running total to zero
+	calculationPerformed = false;
+	decimalRepeat = false;
+	return; // Return to avoid executing other button checks
+}
 
 string ofApp::hexToDecimal() {
 	// Construct the API URL
