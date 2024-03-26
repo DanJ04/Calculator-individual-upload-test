@@ -526,9 +526,9 @@ string ofApp::DecimalTohex() {
 	size_t decimalPosition = currentNum.find('.');
 	size_t negativePosition = currentNum.find('-'); 
 	bool negative = false; // Initialize a boolean variable to track negative sign
-	string positive; 
+	string positive = currentNum; 
         if (negativePosition != string::npos) { 
-		positive = currentNum.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
+		positive.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
 		negative = true; // Set negative to true if negative sign was found
         };
 	
