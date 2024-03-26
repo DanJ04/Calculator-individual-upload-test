@@ -497,6 +497,13 @@ void ofApp::Clear() {
 }
 
 string ofApp::hexToDecimal() {
+	size_t negativePosition = currentNum.find('-'); 
+	bool negative = false; // Initialize a boolean variable to track negative sign
+	string positive; 
+        if (negativePosition != string::npos) { 
+		positive = currentNum.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
+		negative = true; // Set negative to true if negative sign was found
+        };
 	// Construct the API URL
 	std::string url = "https://networkcalc.com/api/binary/" + currentNum + "?from=16";
 
@@ -507,14 +514,26 @@ string ofApp::hexToDecimal() {
 		return " ";
 	}
 	
-	return json["converted"].asString();
+	string result = json["converted"].asString();
+	 // If the number was negative, add the negative sign back 
+	if (negative) { 
+		result = "-" + result; 
+	}
+	return result;
 }
 string ofApp::DecimalTohex() {
 	// Find the position of the decimal point
 	size_t decimalPosition = currentNum.find('.');
+	size_t negativePosition = currentNum.find('-'); 
+	bool negative = false; // Initialize a boolean variable to track negative sign
+	string positive; 
+        if (negativePosition != string::npos) { 
+		positive = currentNum.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
+		negative = true; // Set negative to true if negative sign was found
+        };
 	
 	// Extract the substring before the decimal point
-	string integerPart = currentNum.substr(0, decimalPosition);
+	string integerPart = positive.substr(0, decimalPosition);
 
 	std::string url = "https://networkcalc.com/api/binary/" + integerPart + "?from=10&to=16";
 
@@ -524,7 +543,12 @@ string ofApp::DecimalTohex() {
 		ofLogError() << "Failed to parse JSON from API";
 		return " ";
 	}
-	return json["converted"].asString();
+	string result = json["converted"].asString();
+	 // If the number was negative, add the negative sign back 
+	if (negative) { 
+		result = "-" + result; 
+	}
+	return result;
 }
 
 void ofApp::percentage() {
