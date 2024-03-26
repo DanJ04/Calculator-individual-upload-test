@@ -478,6 +478,8 @@ void ofApp::mousePressed(int x, int y, int button) {
 		if (buttonEqualH.inside(x, y)) {
 			currentNum = hexToDecimal(); // convert the hex number to decimal
 			calculate(); // Calculate the result
+			string hexnum = DecimalTohex();//output the coverted hex number of the decimal
+			cout << "Total Calculated in HEX: " + hexnum << endl;
 		}
 
 		if (buttonClearH.inside(x, y)) {
@@ -506,7 +508,23 @@ string ofApp::hexToDecimal() {
 	}
 	
 	return json["converted"].asString();
+}
+string ofApp::DecimalTohex() {
+	// Find the position of the decimal point
+	size_t decimalPosition = currentNum.find('.');
+	
+	// Extract the substring before the decimal point
+	string integerPart = currentNum.substr(0, decimalPosition);
 
+	std::string url = "https://networkcalc.com/api/binary/" + integerPart + "?from=10&to=16";
+
+	// Load JSON from the API
+	ofxJSONElement json;
+	if (!json.open(url)) {
+		ofLogError() << "Failed to parse JSON from API";
+		return " ";
+	}
+	return json["converted"].asString();
 }
 
 void ofApp::percentage() {
