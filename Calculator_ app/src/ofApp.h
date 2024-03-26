@@ -32,6 +32,7 @@ class ofApp : public ofBaseApp{
 		ofRectangle buttonEqual;
 		ofRectangle buttonDecimal;
 		ofRectangle button0;
+		ofRectangle historyButton;
 		//-------------------------------------
 
 
@@ -134,6 +135,8 @@ class ofApp : public ofBaseApp{
 		string operatorState;
 		float num1 = 0;
 		float num2 = 0;
+		int currentIndex;
+		vector <float> totals;
 
 // Declare a member variable to store the running total
 float runningTotal = 0;
