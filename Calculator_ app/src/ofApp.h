@@ -147,5 +147,6 @@ bool decimalRepeat = false;
 //converting hex number to decimal
 ofxJSONElement json;
 string hexToDecimal();
-		
+//converting decimal to hexadecimal 
+string DecimalTohex();
 };
