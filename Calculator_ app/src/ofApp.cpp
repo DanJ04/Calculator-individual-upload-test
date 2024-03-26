@@ -11,6 +11,7 @@ void ofApp::setup() {
 	buttonEqual.set(380, 620, 100, 100); //Setup of buttons pushed by kieran
 	buttonDecimal.set(260, 620, 100, 100);
 	button0.set(140, 620, 100, 100);
+	historyButton.set(375, 20, 50, 50);
 	//-------------------------------------
 
 
@@ -108,6 +109,7 @@ void ofApp::draw() {
 		ofSetColor(180);
 		ofDrawRectangle(buttonDecimal);
 		ofDrawRectangle(button0);
+		ofDrawRectangle(historyButton);
 		//-------------------------------------
 
 
@@ -152,6 +154,7 @@ void ofApp::draw() {
 		testFont.drawString(".", 305, 680); //Decimal point drawn
 		testFont.drawString("0", 180, 690); //Number 0 drawn
 		testFont.drawString("=", 420, 690); //Equals operator drawn
+		testFont.drawString("H", 385, 65);
 		//-------------------------------------
 
 
@@ -393,7 +396,25 @@ void ofApp::mousePressed(int x, int y, int button) {
 			Clear();
 		}
 
+		if (historyButton.inside(x, y)) {
+			// Assuming "ofApp" is the name of your class instance
+			if (!totals.empty()) {
+				// Move to the previous index in the vector
+				currentIndex = (currentIndex - 1 + totals.size()) % totals.size();
+				float total = totals[currentIndex];
+				if (total == static_cast<int>(total)) {
+					currentNum = to_string(static_cast<int>(total)); // Update currentNum from history without decimal
+				}
+				else {
+					currentNum = to_string(total); // Update currentNum from history with decimal
+				}
+			}
+			else {
+				cout << "History is empty!" << endl;
+			}
+		}
 		break;
+		
 		//--------------------------------------
 	case HEX_SCREEN:
 
@@ -622,46 +643,53 @@ void ofApp::processOperator(const string& op) {
 	}
 }
 
-
 void ofApp::calculate() {
-    if (!currentNum.empty()) {
-        float num2 = stof(currentNum); // Convert the current number to a float
-        if (operatorState == "+") {
-            runningTotal += num2; // Perform addition operation
-        }
-        else if (operatorState == "/") {
-            if (num2 != 0) { // Check if divisor is not zero
-                runningTotal /= num2; // Perform division operation
-            }
-            else {
-                // Handle division by zero error
-                cout << "Error: Division by zero" << endl;
-                return;
-            }
-        }
-        else if (operatorState == "*") {
-            runningTotal *= num2; // Perform multiplication operation
-        }
-        else if (operatorState == "-") {
-            runningTotal -= num2; // Perform subtraction operation
-        }
+	if (!currentNum.empty()) {
+		float num2 = stof(currentNum); // Convert the current number to a float
+		if (operatorState == "+") {
+			runningTotal += num2; // Perform addition operation
+		}
+		else if (operatorState == "/") {
+			if (num2 != 0) { // Check if divisor is not zero
+				runningTotal /= num2; // Perform division operation
+			}
+			else {
+				// Handle division by zero error
+				cout << "Error: Division by zero" << endl;
+				return;
+			}
+		}
+		else if (operatorState == "*") {
+			runningTotal *= num2; // Perform multiplication operation
+		}
+		else if (operatorState == "-") {
+			runningTotal -= num2; // Perform subtraction operation
+		}
 		else if (operatorState == "") {
 			runningTotal = num2; // if no operator then total == current number
 		}
 
-        
-        if (runningTotal == static_cast<int>(runningTotal)) { //Used static cast to convert string to integer(avoids having uneccessary .000000 for whole numbers
-            currentNum = to_string(static_cast<int>(runningTotal)); 
-        }
-        else {
-            currentNum = to_string(runningTotal); 
-        }
+		if (runningTotal == static_cast<int>(runningTotal)) {
+			currentNum = to_string(static_cast<int>(runningTotal));
+		}
+		else {
+			currentNum = to_string(runningTotal);
+		}
 
-        cout << "Total Calculated: " << currentNum << endl; // Output the running total 
-        operatorState.clear(); // Reset the operator state for next calculation
-        resultSound.play();
-    }
+		cout << "Total Calculated: " << currentNum << endl; // Output the running total 
+		operatorState.clear(); // Reset the operator state for next calculation
+		resultSound.play();
+
+		totals.push_back(runningTotal); // Store the running total in the vector
+
+	
+		cout << "History: ";
+		for (auto it = totals.rbegin(); it != totals.rend(); ++it) { //Using for statement to save history from start to end
+			cout << *it << " "; //Outputs the history everytime
+		}
+	}
 }
+
 
 
 
