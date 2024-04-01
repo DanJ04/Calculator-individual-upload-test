@@ -11,7 +11,7 @@ void ofApp::setup() {
 	buttonEqual.set(380, 620, 100, 100); //Setup of buttons pushed by kieran
 	buttonDecimal.set(260, 620, 100, 100);
 	button0.set(140, 620, 100, 100);
-	historyButton.set(375, 20, 50, 50);
+	historyButton.set(430, 20, 50, 50);
 	//-------------------------------------
 
 
@@ -57,7 +57,7 @@ void ofApp::setup() {
 
 
 
-        //------------ANJALI--------------------
+	//------------ANJALI--------------------
 	buttonh1.set(20, 644, 100, 76);
 	buttonh2.set(140, 644, 100, 76);
 	buttonh3.set(260, 644, 100, 76);
@@ -83,10 +83,7 @@ void ofApp::setup() {
 
 }
 
-//--------------------------------------------------------------
-void ofApp::update() {
 
-}
 
 //--------------------------------------------------------------
 void ofApp::draw() {
@@ -94,13 +91,13 @@ void ofApp::draw() {
 	// Draw different elements based on the current screen state
 	switch (currentScreen) {
 	case MAIN_SCREEN:
-		
+
 		ofBackground(0);
 		ofSetColor(180);
 		//draw button
-		testFont.drawString(operatorState, 415, 100);
+		testFont.drawString(operatorState, 395, 100);
 		testFont.drawString(currentNum, 150, 100);
-		
+
 
 		//---------KIERAN----------------------
 		ofDrawRectangle(button1);
@@ -154,7 +151,7 @@ void ofApp::draw() {
 		testFont.drawString(".", 305, 680); //Decimal point drawn
 		testFont.drawString("0", 180, 690); //Number 0 drawn
 		testFont.drawString("=", 420, 690); //Equals operator drawn
-		testFont.drawString("H", 385, 65);
+		testFont.drawString("H", 440, 65);
 		//-------------------------------------
 
 
@@ -197,8 +194,8 @@ void ofApp::draw() {
 	case HEX_SCREEN:
 		ofBackground(0);
 		ofSetColor(180);
-		testFont.drawString(operatorState, 415, 100);
-                testFont.drawString(currentNum, 150, 100);
+		testFont.drawString(operatorState, 395, 100);
+		testFont.drawString(currentNum, 150, 100);
 
 		//-----------------anjaly-------
 		ofDrawRectangle(buttonA);
@@ -221,6 +218,7 @@ void ofApp::draw() {
 		ofDrawRectangle(buttonh8);
 		ofDrawRectangle(buttonh9);
 		ofDrawRectangle(buttonh0);
+		ofDrawRectangle(historyButton);
 
 		ofSetColor(255, 165, 0);
 		ofDrawRectangle(buttonDivH);
@@ -237,6 +235,7 @@ void ofApp::draw() {
 		ofSetColor(255);
 		testFont.drawString("HEX", 150, 210);
 		testFont.drawString("C", 55, 210);
+		testFont.drawString("H", 440, 65);
 
 		testFont.drawString("/", 285, 210);
 		testFont.drawString("X", 420, 210);
@@ -270,25 +269,7 @@ void ofApp::draw() {
 
 }
 
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key) {
 
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button) {
-
-}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
@@ -299,6 +280,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 			// Switch to the hex screen
 			currentScreen = HEX_SCREEN;
 			Clear();
+			totals.clear();
 		}
 		if (button1.inside(x, y)) {
 			appendNumber("1"); // Append "1" to the current number
@@ -358,28 +340,28 @@ void ofApp::mousePressed(int x, int y, int button) {
 			processOperator("-"); // process substraction operator
 		}
 
-		
+
 		if (buttonPandN.inside(x, y)) {
 			if (!buttonClicked) {
 				appendNumber("-"); // negative integers
-				isNegative = true; 
+				isNegative = true;
 			}
 			else {
 				if (isNegative) {
 					// Change to positive
 					currentNum.clear(); // Clear the previous minus sign
 					appendNumber("+"); // Append plus sign
-					isNegative = false; 
+					isNegative = false;
 				}
 				else {
 					// Change to negative
 					currentNum.clear(); // Clear the previous plus sign
 					appendNumber("-"); // Append minus sign
-					isNegative = true; 
+					isNegative = true;
 				}
 
-			buttonClicked = true; // Mark the button as clicked
-		}
+				buttonClicked = true; // Mark the button as clicked
+			}
 
 			buttonClicked = true; // Mark the button as clicked
 		}
@@ -414,7 +396,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 			}
 		}
 		break;
-		
+
 		//--------------------------------------
 	case HEX_SCREEN:
 
@@ -422,8 +404,9 @@ void ofApp::mousePressed(int x, int y, int button) {
 			// Switch to the main screen
 			currentScreen = MAIN_SCREEN;
 			Clear();
+			totals.clear();
 		}
-				if (buttonh1.inside(x, y)) {
+		if (buttonh1.inside(x, y)) {
 			appendNumber("1"); // Append "1" to the current number
 		}
 		if (buttonh2.inside(x, y)) {
@@ -494,14 +477,35 @@ void ofApp::mousePressed(int x, int y, int button) {
 
 		if (buttonEqualH.inside(x, y)) {
 			currentNum = hexToDecimal();// convert the hex number to decimal
-			cout << "Decimal"<< endl;
+			cout << "Decimal" << endl;
 			calculate(); // Calculate the result
 			currentNum = DecimalTohex();//covert the decimal to hexadecimal
-			cout << "Hexadecimal\nTotal Calculated: " + currentNum << endl;
+			cout << "\nHexadecimal\nTotal Calculated: " + currentNum << endl;
 		}
 
 		if (buttonClearH.inside(x, y)) {
 			Clear();
+		}
+
+		if (historyButton.inside(x, y)) {
+			// Assuming "ofApp" is the name of your class instance
+			if (!totals.empty()) {
+				// Move to the previous index in the vector
+				currentIndex = (currentIndex - 1 + totals.size()) % totals.size();
+				float total = totals[currentIndex];
+				if (total == static_cast<int>(total)) {
+					currentNum = to_string(static_cast<int>(total)); // Update currentNum from history without decimal
+					currentNum = DecimalTohex();
+				}
+				else {
+					currentNum = to_string(total); // Update currentNum from history with 
+					currentNum = DecimalTohex();
+
+				}
+			}
+			else {
+				cout << "History is empty!" << endl;
+			}
 		}
 		break;
 	}
@@ -518,13 +522,13 @@ void ofApp::Clear() {
 }
 
 string ofApp::hexToDecimal() {
-	size_t negativePosition = currentNum.find('-'); 
+	size_t negativePosition = currentNum.find('-');
 	bool negative = false; // Initialize a boolean variable to track negative sign
-	string positive; 
-        if (negativePosition != string::npos) { 
+	string positive;
+	if (negativePosition != string::npos) {
 		positive = currentNum.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
 		negative = true; // Set negative to true if negative sign was found
-        };
+	};
 	// Construct the API URL
 	std::string url = "https://networkcalc.com/api/binary/" + currentNum + "?from=16";
 
@@ -534,25 +538,25 @@ string ofApp::hexToDecimal() {
 		ofLogError() << "Failed to parse JSON from API";
 		return " ";
 	}
-	
+
 	string result = json["converted"].asString();
-	 // If the number was negative, add the negative sign back 
-	if (negative) { 
-		result = "-" + result; 
+	// If the number was negative, add the negative sign back 
+	if (negative) {
+		result = "-" + result;
 	}
 	return result;
 }
 string ofApp::DecimalTohex() {
 	// Find the position of the decimal point
 	size_t decimalPosition = currentNum.find('.');
-	size_t negativePosition = currentNum.find('-'); 
+	size_t negativePosition = currentNum.find('-');
 	bool negative = false; // Initialize a boolean variable to track negative sign
-	string positive = currentNum; 
-        if (negativePosition != string::npos) { 
+	string positive = currentNum;
+	if (negativePosition != string::npos) {
 		positive.erase(negativePosition, 1); // Erase 1 character starting from negativePosition 
 		negative = true; // Set negative to true if negative sign was found
-        };
-	
+	};
+
 	// Extract the substring before the decimal point
 	string integerPart = positive.substr(0, decimalPosition);
 
@@ -565,9 +569,9 @@ string ofApp::DecimalTohex() {
 		return " ";
 	}
 	string result = json["converted"].asString();
-	 // If the number was negative, add the negative sign back 
-	if (negative) { 
-		result = "-" + result; 
+	// If the number was negative, add the negative sign back 
+	if (negative) {
+		result = "-" + result;
 	}
 	return result;
 }
@@ -682,7 +686,7 @@ void ofApp::calculate() {
 
 		totals.push_back(runningTotal); // Store the running total in the vector
 
-	
+
 		cout << "History: ";
 		for (auto it = totals.rbegin(); it != totals.rend(); ++it) { //Using for statement to save history from start to end
 			cout << *it << " "; //Outputs the history everytime
@@ -694,32 +698,3 @@ void ofApp::calculate() {
 
 
 
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo) {
-
-}
